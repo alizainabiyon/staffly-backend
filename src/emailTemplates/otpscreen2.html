@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset Password</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        text-decoration: none;
+        background-color: #f9f9f9;
+        color: #282d37;
+      }
+      .email-container {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        overflow: hidden;
+      }
+      .header .welcome {
+        margin-top: 5px;
+      }
+      .header h1 {
+        margin: 10px 0 0;
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 43.57px;
+      }
+      .content {
+        padding: 10px 20px 32px 20px;
+      }
+      .content h2 {
+        color: #505358;
+        margin: 0px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19.36px;
+      }
+      .content h3 {
+        color: #505358;
+        margin-top: 15px;
+        margin-bottom: 0;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 19.36px;
+      }
+      .content h5 {
+        color: #505358;
+        margin: 0px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19.36px;
+      }
+      .content p {
+        color: #505358;
+        margin-top: 15px;
+        margin-bottom: 0;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19.36px;
+      }
+      .footer {
+        background: #181818;
+        color: #ffffff;
+        text-align: center;
+        padding: 16px 15px 16px 15px;
+      }
+      .footer .social-icons {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+      .footer h4 {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 0;
+        color: #e2e2e2;
+      }
+      .footer a {
+        text-decoration: none;
+        color: #2f9cef;
+      }
+      .footer .copy-right {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: center;
+        color: #e2e2e2;
+        margin-top: 5px;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <!-- Header Section -->
+      <div style="padding: 20px">
+        <div style="margin: auto; width: fit-content">
+          <img
+            src="https://res.cloudinary.com/dhvgwvlbc/image/upload/v1736513682/wlqgjdwdjs704z5cnxko.png"
+            alt=""
+            style="width: 150px"
+          />
+        </div>
+        <div style="margin: auto; margin-top: 10px; width: fit-content">
+          <img src="{{url}}" alt="" />
+        </div>
+        <h1 style="margin: auto; width: fit-content">
+          {{title}}
+          <!-- Your Password Reset Request -->
+        </h1>
+      </div>
+
+      <!-- Main Content Section -->
+      <div class="content">{{#body}} {{{p}}} {{/body}}</div>
+
+      <!-- Footer Section -->
+      <div class="footer">
+        <img
+          src="https://res.cloudinary.com/dhvgwvlbc/image/upload/v1736513682/rtr6gg5xhr2fiutrlzbl.png"
+          alt=""
+        />
+        <div style="margin: auto; width: fit-content; text-align: center">
+          <a href="#" style="display: inline-block">
+            <img
+              src="https://res.cloudinary.com/dhvgwvlbc/image/upload/v1736513682/tflazsgj1iarkxhkjvl5.png"
+              alt=""
+            />
+          </a>
+          <a href="#" style="display: inline-block; padding-left: 10px">
+            <img
+              src="https://res.cloudinary.com/dhvgwvlbc/image/upload/v1736513682/otjdfzajusxvvlbmr5xq.png"
+              alt=""
+            />
+          </a>
+          <a href="#" style="display: inline-block; padding-left: 10px">
+            <img
+              src="https://res.cloudinary.com/dhvgwvlbc/image/upload/v1736513682/v5t38cwtzixitxq8g4pk.png"
+              alt=""
+            />
+          </a>
+          <a href="#" style="display: inline-block; padding-left: 10px">
+            <img
+              src="https://res.cloudinary.com/dhvgwvlbc/image/upload/v1736513683/zgnivunivhzleknaxhll.png"
+              alt=""
+            />
+          </a>
+          <a href="#" style="display: inline-block; padding-left: 10px">
+            <img
+              src="https://res.cloudinary.com/dhvgwvlbc/image/upload/v1736513683/awulpeyif5iebejbdgb9.png"
+              alt=""
+            />
+          </a>
+        </div>
+
+        <h4>
+          This email was sent to
+          <a href="#">CashflowInnovator.com</a>. If you'd rather not receive
+          this kind of email, you can
+          <a href="#">unsubscribe</a>
+          or
+          <a href="#">manage your email preferences</a>.
+        </h4>
+        <p class="copy-right">
+          © 2025 Cashflow Innovator. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

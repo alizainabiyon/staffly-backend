@@ -1,0 +1,148 @@
+const Joi = require('joi');
+const { routesConfig } = require('../../../lib/configs');
+const { baseURL, app, methods } = routesConfig;
+const { v1 } = app.versions;
+const { GET, POST, PUT, DELETE } = methods; // eslint-disable-line
+
+exports.dailyEntry = {
+  [[
+    baseURL,
+    app.path,
+    v1.path,
+    v1.routes.dailyEntry.path,
+    v1.routes.dailyEntry.subPaths.createEntry,
+  ].join('')]: {
+    [POST]: Joi.object({
+      contractorId: Joi.string().allow(null, '').optional(),
+      customerId: Joi.string().allow(null, '').optional(),
+      vendorId: Joi.string().allow(null, '').optional(),
+      employeeId: Joi.string().allow(null, '').optional(),
+      directorId: Joi.string().allow(null, '').optional(),
+      entryDate: Joi.date().required(),
+      expenseCategory: Joi.string().allow(null, '').optional(),
+      expenseType: Joi.string().allow(null, '').optional(),
+      entryType: Joi.string().valid('customer', 'vendor', 'employee', 'director', 'expense', 'other').required(),
+      paymentType: Joi.string().valid('credit', 'debit').optional(),
+      paymentMethod: Joi.string().valid('cash', 'bank').optional(),
+      purpose: Joi.string().required(),
+      description: Joi.string().allow(null, '').optional(),
+      amount: Joi.number().min(0).required(),
+      destinationType: Joi.string().valid('till', 'director', 'vendor').optional(),
+      destinationDirectorId: Joi.string().allow(null, '').optional(),
+      destinationVendorId: Joi.string().allow(null, '').optional(),
+      entryClearStatus: Joi.string().valid('pending', 'cleared', 'rejected').optional(),
+      notes: Joi.string().allow(null, '').optional(),
+      status: Joi.string().valid('draft', 'completed').optional(),
+    }),
+  },
+  [[
+    baseURL,
+    app.path,
+    v1.path,
+    v1.routes.dailyEntry.path,
+    v1.routes.dailyEntry.subPaths.getAllEntries,
+  ].join('')]: {
+    [GET]: Joi.object({
+      contractorId: Joi.string().allow(null, '').optional(),
+      customerId: Joi.string().allow(null, '').optional(),
+      vendorId: Joi.string().allow(null, '').optional(),
+      employeeId: Joi.string().allow(null, '').optional(),
+      directorId: Joi.string().allow(null, '').optional(),
+      entryType: Joi.string().valid('customer', 'vendor', 'employee', 'director', 'expense', 'other').optional(),
+      paymentType: Joi.string().valid('credit', 'debit').optional(),
+      destinationType: Joi.string().valid('till', 'director', 'vendor').optional(),
+      entryClearStatus: Joi.string().valid('pending', 'cleared', 'rejected').optional(),
+      status: Joi.string().valid('draft', 'completed').optional(),
+      sortBy: Joi.string().valid('createdAt', 'updatedAt', 'entryDate', 'amount').optional(),
+      sortOrder: Joi.string().valid('asc', 'desc').optional(),
+      page: Joi.number().min(1).optional(),
+      limit: Joi.number().min(1).max(100).optional(),
+    }),
+  },
+  [[
+    baseURL,
+    app.path,
+    v1.path,
+    v1.routes.dailyEntry.path,
+    v1.routes.dailyEntry.subPaths.getEntryById,
+  ].join('')]: {
+    [GET]: Joi.object({
+      entryId: Joi.string().required(),
+    }),
+  },
+  [[
+    baseURL,
+    app.path,
+    v1.path,
+    v1.routes.dailyEntry.path,
+    v1.routes.dailyEntry.subPaths.updateEntry,
+  ].join('')]: {
+    [PUT]: Joi.object({
+      entryId: Joi.string().required(),
+      contractorId: Joi.string().allow(null, '').optional(),
+      customerId: Joi.string().allow(null, '').optional(),
+      vendorId: Joi.string().allow(null, '').optional(),
+      employeeId: Joi.string().allow(null, '').optional(),
+      directorId: Joi.string().allow(null, '').optional(),
+      entryDate: Joi.date().optional(),
+      expenseCategory: Joi.string().allow(null, '').optional(),
+      expenseType: Joi.string().allow(null, '').optional(),
+      entryType: Joi.string().valid('customer', 'vendor', 'employee', 'director', 'expense', 'other').optional(),
+      paymentType: Joi.string().valid('credit', 'debit').optional(),
+      paymentMethod: Joi.string().valid('cash', 'bank').optional(),
+      purpose: Joi.string().min(2).max(200).optional(),
+      description: Joi.string().allow(null, '').max(1000).optional(),
+      amount: Joi.number().min(0).optional(),
+      currency: Joi.string().max(3).optional(),
+      destinationType: Joi.string().valid('till', 'director', 'vendor').optional(),
+      destinationDirectorId: Joi.string().allow(null, '').optional(),
+      destinationVendorId: Joi.string().allow(null, '').optional(),
+      entryClearStatus: Joi.string().valid('pending', 'cleared', 'rejected').optional(),
+      notes: Joi.string().allow(null, '').max(1000).optional(),
+      status: Joi.string().valid('draft', 'completed').optional(),
+    }),
+  },
+  [[
+    baseURL,
+    app.path,
+    v1.path,
+    v1.routes.dailyEntry.path,
+    v1.routes.dailyEntry.subPaths.deleteEntry,
+  ].join('')]: {
+    [DELETE]: Joi.object({
+      entryId: Joi.string().required(),
+    }),
+  },
+  [[
+    baseURL,
+    app.path,
+    v1.path,
+    v1.routes.dailyEntry.path,
+    v1.routes.dailyEntry.subPaths.saveTodayEntries,
+  ].join('')]: {
+    [POST]: Joi.object({}),
+  },
+  [[
+    baseURL,
+    app.path,
+    v1.path,
+    v1.routes.dailyEntry.path,
+    v1.routes.dailyEntry.subPaths.getEntriesByDateOrBetweenDates,
+  ].join('')]: {
+    [GET]: Joi.object({
+      startDate: Joi.date().optional(),
+      endDate: Joi.date().optional(),
+      singleDate: Joi.date().optional(),
+      contractorId: Joi.string().allow(null, '').optional(),
+      customerId: Joi.string().allow(null, '').optional(),
+      vendorId: Joi.string().allow(null, '').optional(),
+      employeeId: Joi.string().allow(null, '').optional(),
+      directorId: Joi.string().allow(null, '').optional(),
+      entryType: Joi.string().valid('customer', 'vendor', 'employee', 'director', 'expense', 'other').optional(),
+      paymentType: Joi.string().valid('credit', 'debit').optional(),
+      destinationType: Joi.string().valid('till', 'director', 'vendor').optional(),
+      entryClearStatus: Joi.string().valid('pending', 'cleared', 'rejected').optional(),
+      status: Joi.string().valid('draft', 'completed').optional(),
+    }).xor('singleDate', 'startDate').and('startDate', 'endDate'),
+  },
+}; 
